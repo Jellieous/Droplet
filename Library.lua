@@ -618,7 +618,6 @@ function SolarisLib:New(Config)
         local general = Settings:Tab("General")
         general:ToggleSetting("Show Music On Launch", "Shows the music menu when you load Snow Hub", true, "ShowMusicOnLaunch")
         general:BindSetting("Close Bind", "Hides/Shows the main window when pressed.", Enum.KeyCode.RightControl, "CloseBind")
-        general:ToggleSetting("Self Destruct", "Destroys the main window when closed.", false)
 
         local appearance = Settings:Tab("Appearance")
         appearance:Dropdown("Theme", "The look of the user interface", {"Default", "Discord", "Red", "Green", "Blue"}, "Default", "Theme")
@@ -904,7 +903,9 @@ function SolarisLib:New(Config)
 
 
                 Slider:Set(start)
-                SolarisLib.Flags[flag] = Slider
+                if not flag == nil then
+                    SolarisLib.Flags[flag] = Slider
+                end
                 return Slider
             end    
             function ItemHold:Dropdown(text,list,def,flag,callback)
@@ -979,7 +980,9 @@ function SolarisLib:New(Config)
 
                 Dropdown:Refresh(list,false)
                 Dropdown:Set(def)
-                SolarisLib.Flags[flag] = Dropdown
+                if not flag == nil then
+                    SolarisLib.Flags[flag] = Dropdown
+                end
                 return Dropdown
             end   
             function ItemHold:MultiDropdown(text,list,def,flag,callback)
@@ -1060,7 +1063,9 @@ function SolarisLib:New(Config)
 
                 Dropdown:Refresh(list,false)
                 Dropdown:Set(def)
-                SolarisLib.Flags[flag] = Dropdown
+                if not flag == nil then
+                    SolarisLib.Flags[flag] = Dropdown
+                end
                 return Dropdown
             end    
             function ItemHold:Colorpicker(text,preset,flag,callback)
@@ -1285,7 +1290,9 @@ function SolarisLib:New(Config)
                 end)
 
 				Bind:Set(preset)
-                SolarisLib.Flags[flag] = Bind
+                if not flag == nil then
+                    SolarisLib.Flags[flag] = Bind
+                end
                 return Bind
             end    
             return ItemHold

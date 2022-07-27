@@ -82,7 +82,6 @@ shared.Droplet = {
 
 local Games = {
     [286090429] = "Arsenal",
-    [155615604] = "Prison Life",
     [4410049285] = "Driving Simulator",
     [13822889] = "Lumber Tycoon",
     [855499080] = "Skywars",
