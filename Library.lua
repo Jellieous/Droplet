@@ -979,7 +979,7 @@ function SolarisLib:New(Config)
                 end)
 
                 Dropdown:Refresh(list,false)
-                Dropdown:Set(def)
+                --Dropdown:Set(def)
                 if not flag == nil then
                     SolarisLib.Flags[flag] = Dropdown
                 end
