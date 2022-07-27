@@ -66,7 +66,7 @@ end
 local Players = game:GetService("Players")
 local Player = Players.LocalPlayer
 
-local URL = "https://raw.githubusercontent.com/Jellieous/Droplet/main/"
+local URL = "https://raw.githubusercontent.com/Jellieous/Droplet/master/"
 
 --[[ Main Script ]]--
 

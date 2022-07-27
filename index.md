@@ -7,4 +7,4 @@
 > - Keeping you undetected.
 
 # Download
-> - `loadstring(game:HttpGet("https://raw.githubusercontent.com/Jellieous/Droplet/master/main.lua"))`
+> - `loadstring(game:HttpGet("https://raw.githubusercontent.com/Jellieous/Droplet/master/main.lua", true))`
