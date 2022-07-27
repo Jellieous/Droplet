@@ -7,16 +7,13 @@
 
 ]]--
 
-
 repeat task.wait() until game:IsLoaded() == true
 
 local Library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/Jellieous/Droplet/master/Library.lua')))()
 
-shared.Droplet.Executed = true,
-
-if shared.Droplet.Executed == true then
-    error("Droplet has already been executed.")
-    return
+if game.CoreGui:FindFirstChild("Droplet") then
+    game.CoreGui.Droplet:Destroy()
+    Library:Notification("Droplet", "Re-executing")
 end
 
 --[[ Checking Dependencies ]]--
@@ -77,13 +74,6 @@ local Window = Library:New({
     Name = "Droplet",
     FolderToSave = "Droplet/Configs"
 })
-
-local Main = Window:Tab("Main")
-
-Main:Button("Self Destruct", function()
-    shared.Droplet.Executed = false
-    game.CoreGui.Droplet:Destroy()
-end)
 
 shared.Droplet = {
     Library = Library,

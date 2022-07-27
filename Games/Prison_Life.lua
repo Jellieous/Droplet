@@ -13,7 +13,7 @@ local Automation = Window:Tab("Automation")
 
 --[[ Combat ]]--
 
-Combat:Dropdown("Give Gun", {"M9", "Remington 870", "AK-47"}, "", function(Value) -- may need flag
+Combat:Dropdown("Give Gun", {"M9", "Remington 870", "AK-47"}, function(Value) -- may need flag
     local A1 = workspace["Prison_ITEMS"].giver[Value].ITEMPICKUP
     local Event = workspace.Remote.ItemHandler
     Event:InvokeServer(A1)
