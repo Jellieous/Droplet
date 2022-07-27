@@ -11,7 +11,7 @@ local PlayersTable = function()
     local Table = {}
     for i,v in pairs(Players:GetPlayers()) do
         if v.Name ~= Player.Name then
-            table.insert(Table, v.DisplayName .. " (@" .. v.Name .. ")")
+            table.insert(Table, v.Name)
         end
     end
     return Table
