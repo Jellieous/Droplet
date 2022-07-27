@@ -13,13 +13,13 @@ local Automation = Window:Tab("Automation")
 
 --[[ Combat ]]--
 
-Combat:Dropdown("Give Gun", {"M9", "Remington 870", "AK-47"}, function(Value) -- may need flag
+Combat:Dropdown("Give Gun", {"M9", "Remington 870", "AK-47"}, "", function(Value) -- may need flag
     local A1 = workspace["Prison_ITEMS"].giver[Value].ITEMPICKUP
     local Event = workspace.Remote.ItemHandler
     Event:InvokeServer(A1)
 end)
 
-Combat:Dropdown("Gun Modification  <font color='#808080'>(WIP)</font>", {"M9", "Remington 870", "AK-47"}, function(Value)
+Combat:Dropdown("Gun Modification  <font color='#808080'>(WIP)</font>", {"M9", "Remington 870", "AK-47"}, "", function(Value)
     local Module = nil
     if Backpack:FindFirstChild(Value) then
         Module = require(Backpack[Value].GunStates)
