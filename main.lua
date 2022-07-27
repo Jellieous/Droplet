@@ -121,8 +121,8 @@ end
 
 
 shared.Droplet = {
-    Library,
-    Window
+    Library = Library,
+    Window = Window
 }
 
 local Games = {
