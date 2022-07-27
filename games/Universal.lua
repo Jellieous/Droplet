@@ -31,8 +31,8 @@ Movement:Slider("Jumppower", 50, 500, 50, 1, "Jumppower", function(Value)
     Humanoid.JumpPower = Value
 end)
 
-local DDTeleport = Movement:Dropdown("Teleport", PlayersTable(), "", nil, function(Value)
-    if not Value == "" then
+local DDTeleport = Movement:Dropdown("Teleport", PlayersTable(), "None", nil, function(Value)
+    if not Value == "None" then
         Character.HumanoidRootPart.CFrame = workspace[Value].HumanoidRootPart.CFrame
     end
 end)

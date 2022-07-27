@@ -9,12 +9,11 @@
 
 repeat task.wait() until game:IsLoaded() == true
 
-local Library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/Jellieous/Droplet/master/Library.lua')))()
-
 if game.CoreGui:FindFirstChild("Droplet") then
     game.CoreGui.Droplet:Destroy()
-    Library:Notification("Droplet", "Re-executing")
 end
+
+local Library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/Jellieous/Droplet/master/Library.lua')))()
 
 --[[ Checking Dependencies ]]--
 
