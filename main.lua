@@ -44,21 +44,21 @@ end
 
 --[[ Folder/File Checks ]]--
 
-if not (isfolder("Droplet")) then
-    makefolder("Droplet")
-    makefolder("Droplet/Configs")
-    makefolder("Droplet/Games")
+if not (isfolder("droplet")) then
+    makefolder("droplet")
+    makefolder("droplet/configs")
+    makefolder("droplet/games")
 else
-    if not (isfolder("Droplet/Configs")) then
-        makefolder("Droplet/Configs")
+    if not (isfolder("droplet/configs")) then
+        makefolder("droplet/configs")
     end
-    if not (isfolder("Droplet/Games")) then
-        makefolder("Droplet/Games")
+    if not (isfolder("droplet/games")) then
+        makefolder("droplet/games")
     end
 end
 
-if not isfile("Droplet/friends.txt") then
-    writefile("Droplet/friends.txt", "")
+if not isfile("droplet/friends.txt") then
+    writefile("droplet/friends.txt", "")
 end
 
 --[[ Variables ]]--
@@ -72,7 +72,7 @@ local URL = "https://raw.githubusercontent.com/Jellieous/Droplet/master/"
 
 local Window = Library:New({
     Name = "Droplet",
-    FolderToSave = "Droplet/Configs"
+    FolderToSave = "droplet"
 })
 
 shared.Droplet = {
@@ -80,7 +80,7 @@ shared.Droplet = {
     Window = Window
 }
 
-local Games = {
+local games = {
     [286090429] = "Arsenal",
     [4410049285] = "Driving Simulator",
     [13822889] = "Lumber Tycoon",
@@ -91,10 +91,10 @@ local Games = {
     [8750997647] = "Tapping Legends X"
 }
 
-for i,v in next, Games do
-    Games[i] = table.concat(v:split(' '), '_')
+for i,v in next, games do
+    games[i] = table.concat(v:split(' '), '_')
 end
 
-local Name = Games[game.PlaceId] or Games[game.GameId]
+local Name = games[game.PlaceId] or games[game.GameId]
 
-loadstring(game:HttpGet(URL .. "Games/" .. (Name or "Universal") .. ".lua", true))()
+loadstring(game:HttpGet(URL .. "games/" .. (Name or "Universal") .. ".lua", true))()
