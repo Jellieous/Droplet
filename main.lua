@@ -7,16 +7,24 @@
 
 ]]--
 
---[[ Checking Dependencies ]]--
 
 repeat task.wait() until game:IsLoaded() == true
 
 local Library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/Jellieous/Droplet/master/Library.lua')))()
 
-local clipboardset = syn and syn.write_clipboard or setclipboard or set_clipboard or write_clipboard or function() end
+if shared.Droplet.Executed == true then
+    error("Droplet has already been executed.")
+    return
+else
+    shared.Droplet.Executed = true
+end
+
+--[[ Checking Dependencies ]]--
+
+local clipboardset = syn and syn.write_clipboard or setclipboard or set_clipboard or write_clipboard or writeclipboard or function() end
 local getasset = getsynasset or getcustomasset or function(location) return "rbxasset://"..location end
-local queueteleport = syn and syn.queue_on_teleport or queue_on_teleport or fluxus and fluxus.queue_on_teleport or function() end
-local requestfunc = syn and syn.request or http and http.request or http_request or fluxus and fluxus.request or request or function(tab)
+local queueteleport = syn and syn.queue_on_teleport or queue_on_teleport or function() end
+local requestfunc = syn and syn.request or http and http.request or http_request or request or function(tab)
 	if tab.Method == "GET" then
 		return {
 			Body = game:HttpGet(tab.Url, true),
@@ -33,12 +41,7 @@ local requestfunc = syn and syn.request or http and http.request or http_request
 end 
 
 if not (getasset and requestfunc and queueteleport) then
-    Library:Notification({
-        Name = "Droplet",
-        Content = "Exploit is not compatible.",
-        Image = "droplet",
-        Time = 5
-    })
+    Library:Notification("Droplet", "Exploit is not compatible.")
     return
 end
 
@@ -74,23 +77,6 @@ local Window = Library:New({
     Name = "Droplet",
     FolderToSave = "Droplet/Configs"
 })
-
-local Main = Window:Tab("Droplet")
-
-local Info = Main:Section("Information")
-local Credits = Main:Section("Credits")
-
-Info:Label("Droplet is a lightweight roblox script developed for effectivity and simplicity.")
-Credits:Label("Droplet is developed by Jellieous.")
-
-local PlayersTable = function()
-    local Table = {}
-    for i,v in pairs(Players:GetPlayers()) do
-        table.insert(Table, v.Name)
-    end
-    return Table
-end
-
 
 shared.Droplet = {
     Library = Library,

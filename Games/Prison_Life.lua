@@ -13,8 +13,6 @@ local Automation = Window:Tab("Automation")
 
 --[[ Combat ]]--
 
-Combat:Label("This section contains various combat related features.")
-
 Combat:Dropdown("Give Gun", {"M9", "Remington 870", "AK-47"}, "", function(Value) -- may need flag
     local A1 = workspace["Prison_ITEMS"].giver[Value].ITEMPICKUP
     local Event = workspace.Remote.ItemHandler
@@ -41,8 +39,6 @@ end)
 
 --[[ Movement ]]--
 
-Movement:Label("Here in the movement tab you can change the movement settings and movement modes for your character.")
-
 Movement:Slider("WalkSpeed", 16, 256, 16, 1, "WalkSpeed", function(Value)
     Humanoid.WalkSpeed = Value
 end)
@@ -53,4 +49,3 @@ end)
 
 --[[ Automation ]]--
 
-Automation:Label("Here in the automation tab you enable different features like AutoArrest, AutoKill, etc.")
