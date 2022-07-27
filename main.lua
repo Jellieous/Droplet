@@ -11,7 +11,7 @@
 
 repeat task.wait() until game:IsLoaded() == true
 
-local Library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/Jellieous/Droplet/master/Library.lua')))()
 
 local clipboardset = syn and syn.write_clipboard or setclipboard or set_clipboard or write_clipboard or function() end
 local getasset = getsynasset or getcustomasset or function(location) return "rbxasset://"..location end
@@ -33,7 +33,7 @@ local requestfunc = syn and syn.request or http and http.request or http_request
 end 
 
 if not (getasset and requestfunc and queueteleport) then
-    Library:MakeNotification({
+    Library:Notification({
         Name = "Droplet",
         Content = "Exploit is not compatible.",
         Image = "droplet",
@@ -70,33 +70,18 @@ local URL = "https://raw.githubusercontent.com/Jellieous/Droplet/master/"
 
 --[[ Main Script ]]--
 
-local Window = Library:MakeWindow({
+local Window = Library:New({
     Name = "Droplet",
-    HidePremium = false,
-    SaveConfig = true,
-    ConfigFolder = "Droplet/Configs",
-    IntroEnabled = true,
-    IntroText = "Preparing",
-    IntroIcon = "droplet",
-    Icon = "droplet"
+    FolderToSave = "Droplet/Configs"
 })
 
-local Main = Window:MakeTab({
-    Name = "Droplet",
-    Icon = "droplet",
-    PremiumOnly = false
-})
+local Main = Window:Tab("Droplet")
 
-local Credits = Main:AddSection({
-    Name = "Credits"
-})
+local Info = Main:Section("Information")
+local Credits = Main:Section("Credits")
 
-local Friends = Main:AddSection({
-    Name = "Friends"
-})
-
-Credits:AddParagraph("About Droplet", "Droplet is a lightweight roblox script developed for effectivity and simplicity.")
-Credits:AddParagraph("Droplet Credits", "Droplet is developed by Jellieous.")
+Info:Label("Droplet is a lightweight roblox script developed for effectivity and simplicity.")
+Credits:Label("Droplet is developed by Jellieous.")
 
 local PlayersTable = function()
     local Table = {}
@@ -104,19 +89,6 @@ local PlayersTable = function()
         table.insert(Table, v.Name)
     end
     return Table
-end
-
-for i,v in pairs(game.CoreGui.Orion:GetDescendants()) do
-    if v:IsA("TextLabel") then
-        v.RichText = true
-        if v.TextColor3 == Color3.fromRGB(150, 150, 150) then
-            if Player.Name == "Jellieous" and Player.UserId == 3606660377 then
-                v.Text = "Developer"
-            end
-        end
-    else
-        break
-    end
 end
 
 
