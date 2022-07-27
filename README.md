@@ -7,5 +7,6 @@
 - Droplet is developed by Jellieous.
 
 ## TODO
-- [ ] Custom Ui-Library based on old solaris ui. With executor, and a dev script hub.
+- [ ] Custom Ui-Library based on old solaris ui.
+- [ ] Ingame executor, rspy button, dex button, self destruct and scripting support.
 - [ ] Multi-Game support
