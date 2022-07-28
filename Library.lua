@@ -535,7 +535,7 @@ function SolarisLib:New(Config)
         function StitchElements()
             local elms = {}
             for i,v in next, SolarisLib.CurrentTab:GetDescendants() do
-                if string.find(v.Name, "element") thenDropletPrivate
+                if string.find(v.Name, "element") then
                     table.insert(elms, v)        
                 end
             end   

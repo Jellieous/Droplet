@@ -13,30 +13,14 @@ if game.CoreGui:FindFirstChild("Droplet") then
     game.CoreGui.Droplet:Destroy()
 end
 
-local Library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/Jellieous/Droplet/master/Library.lua')))()
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Jellieous/Droplet/master/Library.lua"))()
 
 --[[ Checking Dependencies ]]--
 
 local clipboardset = syn and syn.write_clipboard or setclipboard or set_clipboard or write_clipboard or writeclipboard or function() end
-local getasset = getsynasset or getcustomasset or function(location) return "rbxasset://"..location end
 local queueteleport = syn and syn.queue_on_teleport or queue_on_teleport or function() end
-local requestfunc = syn and syn.request or http and http.request or http_request or request or function(tab)
-	if tab.Method == "GET" then
-		return {
-			Body = game:HttpGet(tab.Url, true),
-			Headers = {},
-			StatusCode = 200
-		}
-	else
-		return {
-			Body = "bad exploit",
-			Headers = {},
-			StatusCode = 404
-		}
-	end
-end 
 
-if not (getasset and requestfunc and queueteleport) then
+if not (queueteleport) then
     Library:Notification("Droplet", "Exploit is not compatible.")
     return
 end
