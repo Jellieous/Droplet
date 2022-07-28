@@ -7,16 +7,6 @@ local Backpack = Player.Backpack
 local Character = Player.Character
 local Humanoid = Character.Humanoid
 
-local PlayersTable = function()
-    local Table = {}
-    for i,v in pairs(Players:GetPlayers()) do
-        if v.Name ~= Player.Name then
-            table.insert(Table, v.Name)
-        end
-    end
-    return Table
-end
-
 local Main = Window:Tab("Main")
 
 local Movement = Main:Section("Movement")
@@ -31,16 +21,12 @@ Movement:Slider("Jumppower", 50, 500, 50, 1, "Jumppower", function(Value)
     Humanoid.JumpPower = Value
 end)
 
-local DDTeleport = Movement:Dropdown("Teleport", PlayersTable(), "", nil, function(Value)
-    if not Value == "" then
-        Character.HumanoidRootPart.CFrame = workspace[Value].HumanoidRootPart.CFrame
-        print(Value)
+Movement:Textbox("Teleport", true, callback(Value)
+    for i,v in pairs(Players:GetPlayers()) do
+        if v.Name == Value then
+            Character.HumanoidRootPart.CFrame = v.Character.HumanoidRootPart.CFrame
+        elseif v.DisplayName == Value then
+            Character.HumanoidRootPart.CFrame = v.Character.HumanoidRootPart.CFrame
+        end
     end
-end)
-
-game.Players.PlayerAdded:Connect(function()
-    DDTeleport:Refresh(PlayersTable(), true)
-end)
-game.Players.PlayerRemoving:Connect(function()
-    DDTeleport:Refresh(PlayersTable(), true)
 end)
