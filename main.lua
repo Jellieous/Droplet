@@ -90,7 +90,7 @@ end
 
 local Name = games[game.PlaceId] or games[game.GameId]
 
-if shared.Droplet.Private then
+if shared.DropletPrivate then
     loadstring(readfile("droplet/private/" .. (Name or "Universal") .. ".lua", true))()
 else
     loadstring(game:HttpGet(URL .. "games/" .. (Name or "Universal") .. ".lua", true))()
