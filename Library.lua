@@ -154,6 +154,7 @@ local SolarisLib = {
     Settings = {
         Theme = "Default",
         ShowFriendsOnLaunch = true,
+        DropletPrivate = false,
         CloseBind = "RightShift"
     },
     Flags = {},
@@ -534,7 +535,7 @@ function SolarisLib:New(Config)
         function StitchElements()
             local elms = {}
             for i,v in next, SolarisLib.CurrentTab:GetDescendants() do
-                if string.find(v.Name, "element") then
+                if string.find(v.Name, "element") thenDropletPrivate
                     table.insert(elms, v)        
                 end
             end   
