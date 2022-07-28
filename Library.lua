@@ -490,7 +490,7 @@ function SolarisLib:New(Config)
         local appearance = Settings:Tab("Appearance")
         appearance:Dropdown("Theme", "The look of the user interface", {"Default", "Discord", "Red", "Green", "Blue"}, "Default", "Theme")
 
-    end 
+    end
     SettingsConstructor()
 
     local function OpenTabMenu()
