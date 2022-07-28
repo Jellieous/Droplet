@@ -73,6 +73,12 @@ local URL = "https://raw.githubusercontent.com/Jellieous/Droplet/master/"
 
 --[[ Main Script ]]--
 
+Player.OnTeleport:Connect(function(State)
+    if State == Enum.TeleportState.Started then
+        queueteleport('loadstring(game:HttpGet("https://raw.githubusercontent.com/Jellieous/Droplet/master/main.lua", true))()')
+    end
+end)
+
 local Window = Library:New({
     Name = "Droplet",
     FolderToSave = "droplet"
