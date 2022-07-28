@@ -164,7 +164,7 @@ local SolarisLib = {
 
 
 local MainUI = game:GetObjects("rbxassetid://7835727566")[1]
-print("SolarisLib Loaded!")
+print("Droplet has loaded!")
 local function MakeDraggable(topbarobject, object) 
     pcall(function()
 		local dragging, dragInput, mousePos, framePos = false
@@ -623,10 +623,10 @@ function SolarisLib:New(Config)
         general:ToggleSetting("Show Music On Launch", "Shows the music menu when you load Snow Hub", true, "ShowMusicOnLaunch")
         general:BindSetting("Close Bind", "Hides/Shows the main window when pressed.", Enum.KeyCode.RightShift, "CloseBind")
         general:ToggleSetting("Droplet Private", "Switches droplet into private mode.", false, "DropletPrivate", function(Value)
-            if shared.Droplet.Private then
-                shared.Droplet.Private = false
+            if shared.DropletPrivate == true then
+                shared.DropletPrivate = false
             else
-                shared.Droplet.Private = true
+                shared.DropletPrivate = true
             end
             print("Toggled Droplet Private")
         end)
