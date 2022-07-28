@@ -468,7 +468,7 @@ function SolarisLib:New(Config)
                 Container.Visible = true
             end)
             local TabHold = {}
-            function TabHold:ToggleSetting(title, desc, def, path)
+            function TabHold:ToggleSetting(title, desc, def, path, callback)
                 local value = SolarisLib.Settings[path] or def
                 local Toggle = TogglePreset:Clone()
                 Toggle.Parent = Container
@@ -492,6 +492,10 @@ function SolarisLib:New(Config)
                 Toggle.MouseButton1Click:Connect(function()
                     SetValue(not value)     
                 end)
+
+                if callback then
+                    return callback(value)
+                end
 
                 spawn(function()
                     while wait() do
@@ -617,7 +621,15 @@ function SolarisLib:New(Config)
         
         local general = Settings:Tab("General")
         general:ToggleSetting("Show Music On Launch", "Shows the music menu when you load Snow Hub", true, "ShowMusicOnLaunch")
-        general:BindSetting("Close Bind", "Hides/Shows the main window when pressed.", Enum.KeyCode.RightControl, "CloseBind")
+        general:BindSetting("Close Bind", "Hides/Shows the main window when pressed.", Enum.KeyCode.RightShift, "CloseBind")
+        general:ToggleSetting("Droplet Private", "Switches droplet into private mode.", false, "DropletPrivate", function(Value)
+            if shared.Droplet.Private then
+                shared.Droplet.Private = false
+            else
+                shared.Droplet.Private = true
+            end
+            print("Toggled Droplet Private")
+        end)
 
         local appearance = Settings:Tab("Appearance")
         appearance:Dropdown("Theme", "The look of the user interface", {"Default", "Discord", "Red", "Green", "Blue"}, "Default", "Theme")
@@ -859,7 +871,9 @@ function SolarisLib:New(Config)
                 end)
 
 				Toggle:Set(def)
-                SolarisLib.Flags[flag] = Toggle
+                if not flag == nil then
+                    SolarisLib.Flags[flag] = Toggle
+                end
                 return Toggle
             end    
             function ItemHold:Slider(text,min,max,start,inc,flag,callback)

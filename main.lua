@@ -47,12 +47,16 @@ if not (isfolder("droplet")) then
     makefolder("droplet")
     makefolder("droplet/configs")
     makefolder("droplet/games")
+    makefolder("droplet/private")
 else
     if not (isfolder("droplet/configs")) then
         makefolder("droplet/configs")
     end
     if not (isfolder("droplet/games")) then
         makefolder("droplet/games")
+    end
+    if not (isfolder("droplet/private")) then
+        makefolder("droplet/private")
     end
 end
 
@@ -96,4 +100,8 @@ end
 
 local Name = games[game.PlaceId] or games[game.GameId]
 
-loadstring(game:HttpGet(URL .. "games/" .. (Name or "Universal") .. ".lua", true))()
+if shared.Droplet.Private then
+    loadstring(readfile("droplet/private/" .. (Name or "Universal") .. ".lua", true))()
+else
+    loadstring(game:HttpGet(URL .. "games/" .. (Name or "Universal") .. ".lua", true))()
+end

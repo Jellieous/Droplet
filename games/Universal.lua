@@ -34,6 +34,7 @@ end)
 local DDTeleport = Movement:Dropdown("Teleport", PlayersTable(), "", nil, function(Value)
     if not Value == "" then
         Character.HumanoidRootPart.CFrame = workspace[Value].HumanoidRootPart.CFrame
+        print(Value)
     end
 end)
 
