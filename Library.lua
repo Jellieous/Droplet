@@ -491,7 +491,6 @@ function SolarisLib:New(Config)
         appearance:Dropdown("Theme", "The look of the user interface", {"Default", "Discord", "Red", "Green", "Blue"}, "Default", "Theme")
 
     end 
-    MusicConstructor()
     SettingsConstructor()
 
     local function OpenTabMenu()
