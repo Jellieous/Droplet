@@ -251,6 +251,7 @@ function SolarisLib:New(Config)
     MakeDraggable(MFrame.TopBar, MainUI) 
     local oldScript = script
 
+    local MenuBtnPreset = game:GetObjects("rbxassetid://7037141226")[1]
     local SettingsBtn = MenuBtnPreset:Clone()
     SettingsBtn.Parent = MFrame.TopBar.ButtonHolder.MenuBtn.MenuFrame
     SettingsBtn.Position = UDim2.new(0,0,0,25)
